@@ -1,0 +1,27 @@
+{
+    "main_host":"0.0.0.0",
+    "domain_name":"localhost",
+    "xmpp_server":"localhost",
+    "xmpp_register_port":49999,
+    "password":"nope",
+    "cert":"cert.pem",
+    "key":"key.pem",
+
+    "game_streaming_agent":"gs",
+    "game_streaming_agent_port":49998,
+    "port_begin":50000,
+    "port_end":60000,
+
+    "save_game_agent":"sg",
+
+    "video_streaming_agent":"vs",
+    "video_streaming_agent_port":49997,
+    "janus_host":"localhost",
+    "janus_port":8089,
+    
+    "building_agent":"b",
+
+    "crypto_service_host":"localhost",
+    "crypto_service_port":49996,
+    "crypto_password":"nope"
+}

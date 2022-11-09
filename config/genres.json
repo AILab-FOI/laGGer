@@ -1,0 +1,211 @@
+{
+    [
+	{
+	    "genre":"Action Game",
+	    "subgenres":[
+		{
+		    "genre":"Platformer"
+		},
+		{
+		    "genre":"Shooter",
+		    "subgenres":[
+			{
+			    "genre":"First-person shooter (FPS)"
+			},
+			{
+			    "genre":"Third-person shooter"
+			},
+			{
+			    "genre":" Top-down shooter"
+			}
+		    ]
+		},
+		{
+		    "genre":"Fighting"
+		},
+		{
+		    "genre":"Beat-em up"
+		},
+		{
+		    "genre":"Stealth"
+		},
+		{
+		    "genre":"Survival"
+		},
+		{
+		    "genre":"Rhythm"
+		}
+	    ]
+	},
+	{
+	    "genre":"Action-Adventure Game",
+	    "subgenres":[
+		{
+		    "genre":"Survival horror"
+		},
+		{
+		    "genre":"Metroidvania"
+		}
+	    ]
+	},
+	{
+	    "genre":"Adventure Game",
+	    "subgenres":[
+		{
+		    "genre":"Text adventure"
+		},
+		{
+		    "genre":"Graphic adventure"
+		},
+		{
+		    "genre":"Visual novel"
+		},
+		{
+		    "genre":"Interactive movie"
+		},
+		{
+		    "genre":"Real-time 3D"
+		}
+	    ]
+	},
+	{
+	    "genre":"Role-Playing Game",
+	    "subgenres":[
+		{
+		    "genre":"Action RPG"
+		},
+		{
+		    "genre":"MMORPG"
+		},
+		{
+		    "genre":"Rouguelike"
+		},
+		{
+		    "genre":"Tactical RPG"
+		},
+		{
+		    "genre":"Sandbox RPG"
+		},
+		{
+		    "genre":"First-person party-based RPG"
+		}
+	    ]
+	},
+	{
+	    "genre":"Simulation Game",
+	    "subgenres":[
+		{
+		    "genre":"Construction and management simulation"
+		},
+		{
+		    "genre":"Life simulation"
+		},
+		{
+		    "genre":"Vehicle simulation"
+		}
+	    ]
+	},
+	{
+	    "genre":"Strategy Game",
+	    "subgenres":[
+		{
+		    "genre":"4X"
+		},
+		{
+		    "genre":"Artillery"
+		},
+		{
+		    "genre":"Real-time strategy (RTS)"
+		},
+		{
+		    "genre":"Real-time tactics (RTT)"
+		},
+		{
+		    "genre":"Multiplayer online battle arena (MOBA)"
+		},
+		{
+		    "genre":"Tower defense"
+		},
+		{
+		    "genre":"Turn-based strategy (TBS)"
+		},
+		{
+		    "genre":"Turn-based tactics (TBT)"
+		},
+		{
+		    "genre":"Wargame"
+		},
+		{
+		    "genre":"Grand strategy wargame"
+		}
+	    ]
+	},
+	{
+	    "genre":" Sports Game",
+	    "subgenres":[
+		{
+		    "genre":"Racing"
+		},
+		{
+		    "genre":"Team sport"
+		},
+		{
+		    "genre":"Competitive"
+		},
+		{
+		    "genre":"Sports-based fighting"
+		}
+	    ]
+	},
+	{
+	    "genre":"Puzzle Game",
+	    "subgenres":[
+		{
+		    "genre":"Logic game"
+		},
+		{
+		    "genre":"Trivia game"
+		}
+	    ]
+	},
+	{
+	    "genre":"Other",
+	    "subgenres":[
+		{
+		    "genre":"Idle gaming"
+		},
+		{
+		    "genre":"Casual game"
+		},
+		{
+		    "genre":"Party game"
+		},
+		{
+		    "genre":"Programming game"
+		},
+		{
+		    "genre":"Board game/card game"
+		},
+		{
+		    "genre":"Massively multiplayer online (MMO)"
+		},
+		{
+		    "genre":"Advergame"
+		},
+		{
+		    "genre":"Art game"
+		},
+		{
+		    "genre":"Exergame"
+		},
+		{
+		    "genre":"Serious game"
+		},
+		{
+		    "genre":"Gamification"
+		}
+	    ]
+	}
+    ],
+    "comment":"Source mostly: https://www.idtech.com/blog/different-types-of-video-game-genres"
+}
