@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
+import warnings
+warnings.filterwarnings("ignore")
 from talking_agent import TalkingAgent
 from spade.behaviour import OneShotBehaviour, CyclicBehaviour
 from spade.message import Message
@@ -18,6 +20,7 @@ import aiohttp
 
 from aiortc import RTCPeerConnection, RTCSessionDescription, VideoStreamTrack
 from aiortc.contrib.media import MediaPlayer, MediaRecorder
+
 
 pcs = set()
 
@@ -120,7 +123,7 @@ class VideoStreamingAgent( TalkingAgent ):
 
                 in_reply_to = msg.metadata[ "reply-with" ]
                 room_name = msg.body
-                
+
                 msg = msg.make_reply()
 
                 self.agent.say( "Creating video room..." )
@@ -159,6 +162,7 @@ class VideoStreamingAgent( TalkingAgent ):
 
                 msg.body = str( success )
                 msg.metadata = metadata
+                self.agent.say( success )
                 await self.send( msg )
 
     async def setup( self ):

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 import argparse
 from flask import Flask, request, send_from_directory
 import json

@@ -1,27 +1,27 @@
 {
     "main_host":"0.0.0.0",
-    "domain_name":"localhost",
+    "domain_name":"127.0.0.1",
     "xmpp_server":"localhost",
     "xmpp_register_port":49999,
-    "password":"nope",
-    "cert":"cert.pem",
-    "key":"key.pem",
+    "password":"yoursupersecretpassword",
+    "cert":"/etc/ssl/mycerts/server.crt",
+    "key":"/etc/ssl/mycerts/server.key",
 
-    "game_streaming_agent":"gs",
+    "game_streaming_agent":"gamestreamer",
     "game_streaming_agent_port":49998,
     "port_begin":50000,
     "port_end":60000,
 
-    "save_game_agent":"sg",
+    "save_game_agent":"savegame",
 
-    "video_streaming_agent":"vs",
+    "video_streaming_agent":"videostreamer",
     "video_streaming_agent_port":49997,
     "janus_host":"localhost",
     "janus_port":8089,
     
-    "building_agent":"b",
+    "building_agent":"builder",
 
     "crypto_service_host":"localhost",
     "crypto_service_port":49996,
-    "crypto_password":"nope"
+    "crypto_password":"anotherextrasecretpassword"
 }

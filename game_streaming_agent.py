@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 import argparse
 import json
 import sys
@@ -6,6 +6,8 @@ import os
 import glob
 import subprocess as sp
 
+import warnings
+warnings.filterwarnings("ignore")
 
 from talking_agent import TalkingAgent
 from spade.behaviour import OneShotBehaviour, CyclicBehaviour
@@ -42,6 +44,7 @@ def register( username, password ):
 
     if response.status_code == 200:
         result = response.content.decode('utf-8')
+        print( username, result )
         if result == 'OK':
             return True
         else:
@@ -50,10 +53,22 @@ def register( username, password ):
         raise XMPPRegisterException( 'Error while communicating with server at "%s"' % CONF.xmpp_server )
 
 def register_system():
-    register( CONF.game_streaming_agent, CONF.password )
-    register( CONF.save_game_agent, CONF.password )
-    register( CONF.video_streaming_agent, CONF.password )
-    register( CONF.building_agent, CONF.password )
+    try:
+        register( CONF.game_streaming_agent, CONF.password )
+    except XMPPRegisterException as e:
+        print( e )
+    try:
+        register( CONF.save_game_agent, CONF.password )
+    except XMPPRegisterException as e:
+        print( e )
+    try:
+        register( CONF.video_streaming_agent, CONF.password )
+    except XMPPRegisterException as e:
+        print( e )
+    try:
+        register( CONF.building_agent, CONF.password )
+    except XMPPRegisterException as e:
+        print( e )
 
 def encode( text ):
     url = "https://%s:%d/encrypt/%s/%s" % ( CONF.crypto_service_host, CONF.crypto_service_port, text, CONF.crypto_password )
@@ -89,6 +104,7 @@ def run_vnc( port1, port2 ):
     abs_dir = os.path.dirname( os.path.realpath( '__file__' ) )
     cert = os.path.join( abs_dir, CONF.cert )
     key = os.path.join( abs_dir, CONF.key )
+    print(  [ 'novnc',  '--cert', cert, '--key', key, '--ssl-only', '--listen', str( port2 ), '--vnc', '0.0.0.0:%d' % port1 ] )
     with sp.Popen(  [ 'novnc',  '--cert', cert, '--key', key, '--ssl-only', '--listen', str( port2 ), '--vnc', '0.0.0.0:%d' % port1 ], stdout=sp.PIPE, stderr=sp.STDOUT, bufsize=1 ) as p2, open('logfile_vnc.txt', 'ab') as file:
         for line in p2.stdout: 
             sys.stdout.buffer.write( line ) 
@@ -119,6 +135,7 @@ class GameStreamingAgent( TalkingAgent ):
             return { 'error':'Invalid query string!' }
 
         games = [ ( img.split( '/' )[ 1 ], img ) for img in glob.iglob( 'catridges/*/thumbnail.png' ) ]
+        print( games )
 
         return { 'games':games }
         
@@ -154,11 +171,11 @@ class GameStreamingAgent( TalkingAgent ):
         self.remove_behaviour( initialize )
         await callback.join()
         self.remove_behaviour( callback )
-
+        
         _thread.start_new_thread( run_game, ( game_id, PORT+1 ) )
         _thread.start_new_thread( run_vnc, ( PORT+1, PORT+2 ) )
         
-
+        
         def run_flask():
             app.run( port=PORT, host=HOST, debug=False, ssl_context=( CONF.cert, CONF.key ) )
 
@@ -176,6 +193,8 @@ class GameStreamingAgent( TalkingAgent ):
         result = { "gamer_url":url+gurl,
                    "view_url":url+vurl,
                    "session_id":session_id }
+
+        
         return result
 
     class PrepareGamingRoom( OneShotBehaviour ):
@@ -203,7 +222,7 @@ class GameStreamingAgent( TalkingAgent ):
     class VideoStreamCallback( OneShotBehaviour ):
         async def run( self ):
             msg = Message()
-            msg = await self.receive( timeout=5 ) 
+            msg = await self.receive( timeout=30 ) 
             if msg:
                 self.agent.say( f"VideoStreamCallback: I received a message: {msg.body}" )
                 session_id = msg.metadata[ 'in-reply-to' ]
@@ -237,5 +256,6 @@ if __name__ == '__main__':
     a = GameStreamingAgent( name, CONF.password )
     a.start()
     a.web.start( CONF.main_host, port=CONF.game_streaming_agent_port )
+
     
             

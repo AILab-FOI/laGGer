@@ -261,6 +261,7 @@ $(document).ready(function() {
                           bootbox.alert(
                             "<p>Server error! Videoroom doesn't exist.</p>"
                           );
+			    console.log( msg );  
                         } else {
                           bootbox.alert(msg["error"]);
                         }

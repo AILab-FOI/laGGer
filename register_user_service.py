@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 from flask import Flask
 import sys
 import subprocess as sp
@@ -9,8 +9,9 @@ app = Flask( __name__ )
 
 @app.route('/register/<username>/<password>')
 def register( username, password ):
-    with sp.Popen(  [ 'ejabberdctl', 'register', username, CONF.xmpp_server, password ], stdout=sp.PIPE, stderr=sp.PIPE ) as p_reg:
+    with sp.Popen(  [ 'prosodyctl', 'register', username, CONF.xmpp_server, password ], stdout=sp.PIPE, stderr=sp.PIPE ) as p_reg:
         output = [ str( i ) for i in p_reg.stdout ]
+        print( output )
         try:
             if 'successfully registered' in output[ 0 ]:
                 return 'OK'
