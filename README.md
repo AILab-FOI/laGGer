@@ -124,3 +124,5 @@ Now, Firefox should trust your self-signed certificate for any port on the speci
   9.  Close the "Certificate Manager" window and restart Chrome.
 
 Now, Chrome should trust your self-signed certificate for any port on the specified IP address or domain.
+
+This work has been supported in full by the Croatian Science Foundation under the project number [IP-2019-04-5824](http://dragon.foi.hr:8888/ohai4games).
